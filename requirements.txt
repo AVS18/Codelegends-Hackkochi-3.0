@@ -1,0 +1,10 @@
+Install the following libraries using pip
+
+pip install django
+pip install django-google-translate
+
+Some credentials for understanding
+admin : aditya,kamakshi@1234
+student: student,student
+faculty: faculty,faculty
+librarian: librarian,librarian
