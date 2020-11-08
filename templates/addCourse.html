@@ -1,0 +1,41 @@
+{%extends 'adminDashboard.html'%}
+{%block content%}
+<div class="container">
+    <form action="/dadmin/addCourse" method="POST">
+        {%csrf_token%}
+        <div class="row form-group">
+            <label for="cname">Course Name</label>
+            <input type="text" name="name" id="cname" class="form-control" required>
+        </div>
+        <div class="row form-group">
+            <label for="cd">Description</label>
+            <input type="text" name="description" id="cd" class="form-control" required>
+        </div>
+        <div class="row form-group">
+            <label for="fac">Faculty Name</label>
+            <select name="fac_name" id="fac" class="form-control">
+                {%for item in obj%}
+                <option value="{{item.first_name}}">{{item.first_name}}</option>
+                {%endfor%}
+            </select>
+        </div>    
+        <input type="submit" value="Submit" class="btn btn-info">
+    </form><br>
+    <table class="table table-striped table-bordered table-hover">
+        <caption>Courses Added</caption>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Faculty Assigned</th>
+        </tr>
+        {%for item in courses%}
+        <tr>
+            <td>{{item.name}}</td>
+            <td>{{item.description}}</td>
+            <td>{{item.faculty.first_name}}</td>
+        </tr>
+        {%endfor%}
+    </table>
+    
+</div>
+{%endblock%}

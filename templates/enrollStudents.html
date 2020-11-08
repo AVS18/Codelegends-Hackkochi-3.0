@@ -1,0 +1,25 @@
+{%extends 'facultyDashboard.html'%}
+{%block content%}
+<div class="container">
+    <form action="/faculty/enrollment" method="POST">
+        {%csrf_token%}
+        <div class="row form-group">
+            <label for="course_name">Course</label>
+            <select name="course" id="course_name" class="form-control">
+                {%for item in course%}
+                <option value="{{item.name}}">{{item.name}}</option>
+                {%endfor%}
+            </select>
+        </div>
+        <div class="row form-group">
+            <label for="stud">Student Name</label>
+            <select name="student" id="course_name" class="form-control">
+                {%for item in students%}
+                <option value="{{item.first_name}}">{{item.first_name}}</option>
+                {%endfor%}
+            </select>
+        </div>
+        <input type="submit" value="Enroll Student" class="btn btn-info">
+    </form><br>    
+</div>
+{%endblock%}

@@ -1,0 +1,29 @@
+{%extends 'facultyDashboard.html'%}
+{%block content%}
+<div class="container">
+    <form action="/faculty/updateAttendance" method="POST">
+        {%csrf_token%}
+        <div class="row form-group">
+            <label for="course_name">Course</label>
+            <select name="course" id="course" class="form-control">
+                {%for item in students%}
+                <option value="{{item.course.name}}">{{item.course.name}}</option>
+                {%endfor%}
+            </select>
+        </div>
+        <div class="row form-group">
+            <label for="stud">Student Name</label>
+            <select name="name" id="stud" class="form-control">
+                {%for item in students%}
+                <option value="{{item.student.first_name}}">{{item.student.first_name}}</option>
+                {%endfor%}
+            </select>
+        </div>
+        <div class="row form-group">
+            <label for="attendance">Attendance Percentage</label>
+            <input type="text" name="attendance" id="attendance" class="form-control" required>
+        </div>
+        <input type="submit" value="Update Attendance" class="btn btn-success">
+    </form><br>    
+</div>
+{%endblock%}

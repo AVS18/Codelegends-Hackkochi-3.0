@@ -1,0 +1,40 @@
+{%extends 'studentDashboard.html'%}
+{%block content%}
+<div class="container">
+    <form action="" method="POST">
+        {%csrf_token%}
+        <div class="row form-group">
+            <label for="book">Book</label>
+            <select name="book" id="book" class="form-control">
+                {%for item in books%}
+                <option value="{{item.name}}">{{item.name}} by {{item.author}}</option>
+                {%endfor%}
+            </select>
+        </div>
+        <div class="row form-group">
+            <label for="rdate">Expected Return Date</label>
+            <input type="date" name="return_date" id="rdate" class="form-control" required>
+        </div>
+        <input type="submit" value="Request Book" class="btn btn-info">
+    </form><br>
+    <table class="table table-striped table-bordered table-hover">
+        <caption>Your Announcements</caption>
+        <tr>
+            <th>Book Name</th>
+            <th>Author</th>
+            <th>Date Requested</th>
+            <th>Date Returned</th>
+            <th>Status</th>
+        </tr>
+        {%for item in old%}
+        <tr>
+            <td>{{item.book.name}}</td>
+            <td>{{item.book.author}}</td>
+            <td>{{item.date}}</td>
+            <td>{{item.return_date}}</td>
+            <td>{{item.status}}</td>
+        </tr>
+        {%endfor%}
+    </table>
+</div>
+{%endblock%}

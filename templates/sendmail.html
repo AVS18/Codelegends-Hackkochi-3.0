@@ -1,0 +1,21 @@
+{%extends 'libraryDashboard.html'%}
+{%block content%}
+<div class="container">
+    <form action="" method="POST">
+        {%csrf_token%}
+        <div class="row form-group">
+            <label for="user">Student</label>
+            <select name="name" id="user" class="form-control">
+                {%for item in obj%}
+                <option value="{{item.id}}">{{item.first_name}}</option>
+                {%endfor%}
+            </select>
+        </div>
+        <div class="row form-group">
+            <label for="message">Message</label>
+            <textarea type="text" name="message" id="message" class="form-control" required></textarea>
+        </div>
+        <input type="submit" value="Send Mail" class="btn btn-info">
+    </form><br>    
+</div>
+{%endblock%}
